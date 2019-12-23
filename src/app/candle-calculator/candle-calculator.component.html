@@ -1,0 +1,26 @@
+<mat-card class="calculator-card">
+  <form [formGroup]="candlesForm" (ngSubmit)="calculate()">
+    <mat-form-field>
+      <input matInput placeholder="Количество проданных свечей" type="number" formControlName="soldCandles">
+      <mat-error *ngIf="soldCandlesControl.invalid">
+        <span [hidden]="!soldCandlesControl.errors.required">Укажите количество проданных свечей</span>
+        <span [hidden]="!soldCandlesControl.errors.min">Количество проданных свечей должно быть больше нуля</span>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Количество огарков на свечу" type="number" formControlName="candleEnds">
+      <mat-error *ngIf="candleEndsControl.invalid">
+        <span [hidden]="!candleEndsControl.errors.required">Укажите количество огарков, необходимых для изготовления одной свечи</span>
+        <span [hidden]="!candleEndsControl.errors.min">Значение должно быть больше 1</span>
+      </mat-error>
+    </mat-form-field>
+
+    <button mat-flat-button color="primary" type="submit" [disabled]="!candlesForm.valid">Посчитать</button>
+  </form>
+
+  <div *ngIf="result!==null" class="cc-result">
+    <label>Количество свечей, которые можно получить: {{result}}</label>
+  </div>
+
+</mat-card>
