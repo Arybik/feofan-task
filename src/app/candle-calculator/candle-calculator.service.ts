@@ -5,9 +5,6 @@ import { Injectable } from '@angular/core';
 })
 export class CandleCalculatorService {
 
-  constructor() {
-  }
-
   /**
    * Calculate total amount of candles that can be sold
    * @param soldCandles Initially sold candles

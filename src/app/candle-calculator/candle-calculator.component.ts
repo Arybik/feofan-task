@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import { CandleCalculatorService } from './candle-calculator.service';
 
@@ -7,7 +7,7 @@ import { CandleCalculatorService } from './candle-calculator.service';
   templateUrl: './candle-calculator.component.html',
   styleUrls: ['./candle-calculator.component.sass']
 })
-export class CandleCalculatorComponent implements OnInit {
+export class CandleCalculatorComponent {
 
   result: number = null;
   candlesForm = this.fb.group({
@@ -15,9 +15,6 @@ export class CandleCalculatorComponent implements OnInit {
     candleEnds: [null, [Validators.required, Validators.min(2)]]
   });
   constructor(private fb: FormBuilder, private calculatorService: CandleCalculatorService) { }
-
-  ngOnInit() {
-  }
 
   calculate() {
     this.result = this.calculatorService.calculateCandlesAmount(this.soldCandles, this.candleEnds);
